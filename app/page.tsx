@@ -1,10 +1,14 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from 'react';
+import Layout from './layout';
+import { Typography } from '@mui/material';
 
-export default function Home() {
+const HomePage: React.FC = () => {
   return (
-    <main className={styles.main}>
-      
-    </main>
+    <Layout>
+      <Typography variant="h3">Welcome to Your App!</Typography>
+      <Typography variant="body1">This is the home page content.</Typography>
+    </Layout>
   );
-}
+};
+
+export default HomePage;
