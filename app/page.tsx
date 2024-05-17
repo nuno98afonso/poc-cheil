@@ -1,14 +1,34 @@
-import React from 'react';
-import Layout from './layout';
-import { Typography } from '@mui/material';
+import Link from 'next/link';
+import Activity from './components/SingleActivity';
+import styles from './page.module.css';
+import prisma from '../lib/prisma';
 
-const HomePage: React.FC = () => {
-  return (
-    <Layout>
-      <Typography variant="h3">Welcome to Your App!</Typography>
-      <Typography variant="body1">This is the home page content.</Typography>
-    </Layout>
-  );
+// Define a TypeScript type for Activity
+type Activity = {
+  id: number;
+  description: string | null;
+  createdAt: Date;
 };
 
-export default HomePage;
+async function getActivities(): Promise<Activity[]> {
+  const activities = await prisma.activity.findMany();
+  return activities;
+}
+
+export default async function Home() {
+  const activities = await getActivities();
+  return (
+    <main className={styles.main}>
+      <Link href={'/ActivityDetail'}>Add Activity</Link>
+      <h1>Activity Feed</h1>
+      {activities.map((activity) => (
+        <Activity
+          key={activity.id}
+          id={activity.id}
+          description={activity.description}
+          createdAt={activity.createdAt}
+        />
+      ))}
+    </main>
+  );
+}
