@@ -8,17 +8,17 @@ import DeleteActivityButton from '../components/DeleteActivity';
 // Define a TypeScript type for Activity
 type ActivityType = {
   id: number;
-  description: string | null;
+  title: string | null;
   createdAt: Date;
 };
 
-async function getActivities(): Promise<ActivityType[]> {
-  const activities = await prisma.activity.findMany();
-  return activities;
+async function getActivityTypes(): Promise<ActivityType[]> {
+  const activitytypes = await prisma.activitytype.findMany();
+  return activitytypes;
 }
 
 export default async function Home() {
-  const activities = await getActivities();
+  const activitytypes = await getActivityTypes();
   return (
     <main className={styles.main}>
         <Grid container spacing={2}>
@@ -38,11 +38,10 @@ export default async function Home() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {activities.map((activity) => (
-              <TableRow key={activity.id}>
-                <TableCell>{activity.description}</TableCell>
-                <TableCell>{activity.createdAt.toString()}</TableCell> {/* Convert createdAt to string */}
-                <TableCell><DeleteActivityButton activityId={activity.id}/></TableCell>
+            {activitytypes.map((activitytype) => (
+              <TableRow key={activitytype.id}>
+                <TableCell>{activitytype.title}</TableCell>
+                <TableCell>{activitytype.createdAt.toString()}</TableCell> {/* Convert createdAt to string */}
               </TableRow>
             ))}
           </TableBody>

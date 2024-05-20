@@ -1,7 +1,8 @@
 'use client';
 
+import { Button, Icon } from "@mui/material";
 import { useRouter } from "next/navigation";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 interface DeleteActivityButtonProps {
     activityId: number;
 }
@@ -11,9 +12,14 @@ export default function DeleteActivityButton({ activityId }: DeleteActivityButto
 
     async function handleClick(): Promise<void> {
         try {
-            await fetch(`/api/delete-activity/${activityId}`, {
+            const response = await fetch(`/api/delete-activity/${activityId}`, {
                 method: 'DELETE'
             });
+            if (!response.ok) {
+                console.error(`Failed to delete activity with id ${activityId}. Status: ${response.status}`);
+                return;
+            }
+            console.log(`Activity with id ${activityId} deleted successfully.`);
             router.refresh();
         } catch (e) {
             console.error(e);
@@ -21,6 +27,6 @@ export default function DeleteActivityButton({ activityId }: DeleteActivityButto
     }
 
     return (
-        <button onClick={handleClick}>Delete Activity</button>
+        <Button color="error" onClick={handleClick}><DeleteIcon/></Button>
     )
 }
