@@ -4,6 +4,7 @@ import Activity from '../components/SingleActivity';
 import styles from '../page.module.css';
 import prisma from '../../lib/prisma';
 import DeleteActivityButton from '../components/DeleteActivity';
+import Layout from '../components/layout';
 
 // Define a TypeScript type for Activity
 type ActivityType = {
@@ -13,20 +14,22 @@ type ActivityType = {
 };
 
 async function getActivityTypes(): Promise<ActivityType[]> {
-  const activitytypes = await prisma.activitytype.findMany();
+  const activitytypes = await prisma.activityType.findMany();
   return activitytypes;
 }
 
 export default async function Home() {
   const activitytypes = await getActivityTypes();
   return (
+    
     <main className={styles.main}>
-        <Grid container spacing={2}>
+      <Layout>
+        <Grid container spacing={2} mb={5}>
             <Grid item xs={8}>
-                <div><h1>Activities</h1></div>
+                <div><h1>Activity Types</h1></div>
             </Grid>
-            <Grid item xs={4}>
-                <div><Button href={'/ActivityDetail'}>Add Activity</Button></div>
+            <Grid item xs={4} container direction="row" justifyContent="flex-end" alignItems="center">
+                <div><Button variant='contained' href={'/ActivityTypeDetail'}>Add Activity Type</Button></div>
             </Grid>
         </Grid>
       <TableContainer component={Paper}>
@@ -47,6 +50,7 @@ export default async function Home() {
           </TableBody>
         </Table>
       </TableContainer>
+      </Layout>
     </main>
   );
 }

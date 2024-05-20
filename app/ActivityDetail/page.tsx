@@ -18,7 +18,7 @@ export default function AddActivity() {
     event.preventDefault();
     
     try {
-      await fetch('/api/add-activity', {
+      await fetch('/api/activity/add-activity', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
