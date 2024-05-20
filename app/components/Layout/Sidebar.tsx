@@ -6,7 +6,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import ListIcon from '@mui/icons-material/List';
 import { useRouter } from 'next/navigation';
 
-const drawerWidth = 240;
+const drawerWidth = '15vw';
 
 const Sidebar = () => {
   const router = useRouter();

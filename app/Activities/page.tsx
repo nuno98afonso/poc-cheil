@@ -27,8 +27,8 @@ export default async function Home() {
             <Grid item xs={8}>
                 <div><h1>Activities</h1></div>
             </Grid>
-            <Grid item xs={4}>
-                <div><Button href={'/ActivityDetail'}>Add Activity</Button></div>
+            <Grid item xs={4} container direction="row" justifyContent="flex-end" alignItems="center">
+                <div><Button variant='contained' href={'/ActivityDetail'}>Add Activity Type</Button></div>
             </Grid>
         </Grid>
       <TableContainer component={Paper}>
