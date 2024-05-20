@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation'; 
 import { TextField, Button } from '@mui/material'; // Import Material-UI components
+import Layout from '../components/Layout/layout';
 
 export default function AddActivity() {
   const [description, setDescription] = useState<string>('');
@@ -36,6 +37,7 @@ export default function AddActivity() {
 
   return (
     <main className={styles.main}>
+      <Layout>
       <Link href="/">View Feed</Link>
       <h1>Add Activity</h1>
       <form onSubmit={handleSubmit}>
@@ -54,6 +56,7 @@ export default function AddActivity() {
         </div>
         <Button type="submit" variant="contained" color="primary">Submit</Button> {/* Replace button with Material-UI Button */}
       </form>
+      </Layout>
     </main>
   );
 }

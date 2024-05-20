@@ -4,6 +4,7 @@ import Activity from '../components/Activity/SingleActivity';
 import styles from '../page.module.css';
 import prisma from '../../lib/prisma';
 import DeleteActivityButton from '../components/Activity/DeleteActivity';
+import Layout from '../components/Layout/layout';
 
 // Define a TypeScript type for Activity
 type Activity = {
@@ -21,6 +22,7 @@ export default async function Home() {
   const activities = await getActivities();
   return (
     <main className={styles.main}>
+      <Layout>
         <Grid container spacing={2}>
             <Grid item xs={8}>
                 <div><h1>Activities</h1></div>
@@ -48,6 +50,7 @@ export default async function Home() {
           </TableBody>
         </Table>
       </TableContainer>
+      </Layout>
     </main>
   );
 }

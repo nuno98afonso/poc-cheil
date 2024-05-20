@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation'; 
 import { TextField, Button, Grid } from '@mui/material'; // Import Material-UI components
+import Layout from '../components/Layout/layout';
 
 export default function AddActivityType() {
   const [title, setTitle] = useState<string>('');
@@ -36,6 +37,7 @@ export default function AddActivityType() {
 
   return (
     <main className={styles.main}>
+      <Layout>
         <Grid container spacing={2} mb={5}>
             <Grid item xs={8}>
                 <div><h1>Add Activity Types</h1></div>
@@ -64,6 +66,7 @@ export default function AddActivityType() {
                     </form>
                 </Grid>
         </Grid>
+        </Layout>
     </main>
   );
 }
