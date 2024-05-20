@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Grid, Button } from '@mui/material'; // Import Material-UI components
-import Activity from '../components/SingleActivity';
+import Activity from '../components/Activity/SingleActivity';
 import styles from '../page.module.css';
 import prisma from '../../lib/prisma';
-import DeleteActivityButton from '../components/DeleteActivity';
-import Layout from '../components/layout';
+import DeleteActivityButton from '../components/Activity/DeleteActivity';
+import Layout from '../components/Layout/layout';
 
 // Define a TypeScript type for Activity
 type ActivityType = {

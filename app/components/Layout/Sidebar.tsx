@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import InboxIcon from '@mui/icons-material/Inbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { useRouter } from 'next/router';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import ListIcon from '@mui/icons-material/List';
+import { useRouter } from 'next/navigation';
 
 const drawerWidth = 240;
 
@@ -25,10 +25,10 @@ const Sidebar = () => {
       }}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text} onClick={() => handleNavigation(`/${text.toLowerCase()}`)}>
+        {['Activities', 'Activity Types'].map((text, index) => (
+          <ListItem key={text} onClick={() => handleNavigation(`/${text.replaceAll(' ','')}`)}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {index % 2 === 0 ? <AssignmentIcon /> : <ListIcon />}
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
